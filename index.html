@@ -83,6 +83,8 @@
   .hero .side{margin-top:22px}
   .hero .side p{max-width:38em;margin-left:auto;margin-right:auto}
   .hero .ctas{justify-content:center}
+  .hero .offer{font-size:15px;color:var(--ink);margin-bottom:18px}
+  .hero .offer b{font-weight:500;color:var(--gold-ink)}
   .hero h1{font-size:clamp(36px,4.8vw,60px);letter-spacing:-.015em}
   .hero .subhead{font:italic 400 clamp(18px,1.9vw,23px)/1.45 "Lora",serif;color:var(--muted);margin-top:14px}
   @media (min-width:901px){.hero h1,.hero .subhead{white-space:nowrap}}
@@ -111,7 +113,7 @@
   .draw .card .foot{position:absolute;bottom:24px;left:0;right:0;font-size:12px;color:rgba(255,255,255,.65)}
   .draw .card.face .foot{position:static;text-align:left}
   #draw-note{margin-top:20px}
-  #draw-note a{color:var(--site);font-weight:500}
+  #draw-note a.btn{margin-top:14px;color:#fff}
 
   /* Themes as small cards */
   .themes-head{max-width:620px;margin-bottom:48px}
@@ -211,6 +213,7 @@
       </div>
       <div class="side">
         <p>108 conversation cards to help you get curious, laugh together, and connect more deeply. Created with queer couples in mind. Made for any couple.</p>
+        <p class="offer"><b>$29.99 at launch</b> &middot; coming soon to Amazon</p>
         <div class="ctas">
           <!-- AT LAUNCH: point this to your Amazon listing and change the text to "Get the deck" -->
           <a class="btn btn-solid" href="#notify">Get notified at launch</a>
@@ -306,7 +309,7 @@
   <div class="wrap">
     <div>
       <h2>Hear when it launches</h2>
-      <p>One email when the deck is on Amazon, plus early access. Nothing else.</p>
+      <p>We'll email you when Out Loud Together is available on Amazon.</p>
     </div>
     <div>
 <!-- Mailchimp signup (Out Loud Together audience). Field names, tags and the bot trap come from the Mailchimp embed code. -->
@@ -316,7 +319,7 @@
       <input type="hidden" name="tags" value="396,397">
       <!-- Bot trap: real people never see or fill this in. Do not remove. -->
       <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_ae42612ca9838940dbfbafbaa_80931aaddd" tabindex="-1" value=""></div>
-      <button class="btn" type="submit" id="mc-embedded-subscribe">Join the list</button>
+      <button class="btn" type="submit" id="mc-embedded-subscribe">Email me at launch</button>
     </form>
     <p id="formMsg" aria-live="polite"></p>
       <small>We'll only email you about Out Loud Together. Unsubscribe anytime. <a href="privacy.html">Privacy policy</a></small>
@@ -339,11 +342,11 @@
   // Real questions from the deck, shown in this order
   const cards = [
     {theme:"Spark", num:"02", q:"Which of our inside jokes still makes you laugh, and how did it start?"},
-    {theme:"Spark", num:"08", q:"What is one way being with me has changed you that you did not expect?"},
-    {theme:"Spark", num:"12", q:"What is something about me you understand differently now than when we first met?"},
+    {theme:"Seen", num:"30", q:"Is there a part of yourself you are still learning to accept?"},
     {theme:"Our Story", num:"20", q:"What challenge has taught us the most about who we are together?"},
+    {theme:"Spark", num:"08", q:"What is one way being with me has changed you that you did not expect?"},
     {theme:"Our Story", num:"25", q:"What is a risk you took for us that I may not fully know about?"},
-    {theme:"Seen", num:"30", q:"Is there a part of yourself you are still learning to accept?"}
+    {theme:"Spark", num:"12", q:"What is something about me you understand differently now than when we first met?"}
   ];
   const TOTAL = 108;
   let i = -1;
@@ -355,7 +358,9 @@
       const c = cards[i];
       el.classList.add('face');
       el.innerHTML = `<span class="tag">${c.theme} &middot; ${c.num}/105</span><span class="q">${c.q}</span><span class="foot">${i < cards.length-1 ? 'Tap for another' : 'Out Loud Together'}</span>`;
-      if (i === cards.length-1) note.innerHTML = `That's all we're sharing for now. ${TOTAL - cards.length} more are in the deck. <a href="#notify">Get notified at launch.</a>`;
+      note.innerHTML = i === cards.length-1
+        ? `That's all we're sharing for now. ${TOTAL - cards.length} more are in the deck.<br><a class="btn btn-solid" href="#notify">Email me when it's on Amazon</a>`
+        : `Like that one? There are over 100 more in the deck.<br><a class="btn btn-solid" href="#notify">Email me when it's on Amazon</a>`;
     } else {
       document.getElementById('notify').scrollIntoView({behavior:'smooth'});
     }
