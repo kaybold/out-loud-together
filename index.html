@@ -78,10 +78,14 @@
   .navlinks a.plain:hover{color:var(--gold-ink)}
 
   /* ---------- Hero: headline over a spread of cards ---------- */
-  .hero{padding:56px 0 32px}
-  .hero .top{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:end}
+  .hero{padding:64px 0 8px}
+  .hero .top{max-width:none;text-align:center}
+  .hero .side{margin-top:22px}
+  .hero .side p{max-width:38em;margin-left:auto;margin-right:auto}
+  .hero .ctas{justify-content:center}
   .hero h1{font-size:clamp(36px,4.8vw,60px);letter-spacing:-.015em}
-  .hero .subhead{font:italic 400 clamp(20px,2.2vw,26px)/1.45 "Lora",serif;color:var(--muted);margin-top:18px;max-width:24em}
+  .hero .subhead{font:italic 400 clamp(18px,1.9vw,23px)/1.45 "Lora",serif;color:var(--muted);margin-top:14px}
+  @media (min-width:901px){.hero h1,.hero .subhead{white-space:nowrap}}
   .hero .side p{color:var(--muted);margin-bottom:24px}
   .hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
   .spread{position:relative;height:300px;margin-top:44px;background:var(--tint);border-radius:20px;overflow:hidden}
@@ -95,13 +99,14 @@
   .spread .s3{left:calc(50% + 100px);transform:rotate(8deg);top:60px}
 
   /* ---------- Sections ---------- */
-  section{padding:104px 0}
+  section{padding:80px 0}
   section h2{font-size:clamp(28px,3.4vw,42px);margin-bottom:18px}
 
   /* Draw */
-  .draw .wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+  .draw{padding-top:64px}
+  .draw .wrap{display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center;background:var(--tint);border-radius:20px;padding:48px 56px;max-width:1084px}
   .draw .stage{display:flex;justify-content:center}
-  .draw .card{width:320px;cursor:pointer;border:none;font:inherit;transition:transform .25s}
+  .draw .card{width:250px;cursor:pointer;border:none;font:inherit;transition:transform .25s}
   .draw .card:hover{transform:translateY(-4px) rotate(-1deg)}
   .draw .card .foot{position:absolute;bottom:24px;left:0;right:0;font-size:12px;color:rgba(255,255,255,.65)}
   .draw .card.face .foot{position:static;text-align:left}
@@ -135,7 +140,8 @@
   .note cite{display:block;margin-top:18px;font:400 15px "Poppins",sans-serif;font-style:normal;color:var(--muted)}
 
   /* FAQ */
-  .faq .wrap{display:grid;grid-template-columns:.7fr 1.3fr;gap:64px}
+  .faq .wrap{max-width:760px}
+  .faq h2{margin-bottom:24px}
   details{border-top:1px solid var(--rule);padding:22px 0}
   details:last-of-type{border-bottom:1px solid var(--rule)}
   summary{list-style:none;cursor:pointer;font:500 19px "Lora",serif;display:flex;justify-content:space-between;gap:16px}
@@ -162,7 +168,8 @@
   footer a:hover{color:var(--ink)}
 
   @media (max-width:900px){
-    .hero .top,.draw .wrap,.statement .wrap,.box .wrap,.faq .wrap,.signup .wrap{grid-template-columns:1fr;gap:36px}
+    .hero .top,.draw .wrap,.statement .wrap,.box .wrap,.signup .wrap{grid-template-columns:1fr;gap:36px}
+    .draw .wrap{padding:36px 24px;margin:0 12px}
     .themes{grid-template-columns:repeat(2,1fr)}
     section{padding:72px 0}
     .spread{height:280px;margin-top:36px}
